@@ -13,6 +13,7 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "verbatimModuleSyntax": true,
     "paths": {
       "ui": ["./libs/ui/src/index.ts"],
       "ui/server": ["./libs/ui/src/server.ts"]
