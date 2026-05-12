@@ -10,3 +10,11 @@ node_modules
 .nx/cache
 .nx/workspace-data
 .nx/self-healing
+
+# Next.js
+.next
+out
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
+
+storybook-static
