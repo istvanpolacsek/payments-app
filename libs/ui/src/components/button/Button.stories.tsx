@@ -1,17 +1,52 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import Button from './Button';
+import Button, { COLORS, VARIANTS } from './Button';
 
 const meta = {
   component: Button,
+  args: { children: 'Button label' },
+  argTypes: {
+    variant: { control: 'radio', options: VARIANTS },
+    color: { control: 'radio', options: COLORS },
+  },
+  parameters: { layout: 'centered' },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const FilledPrimary: Story = {
   args: {
-    children: 'Button label',
+    color: 'primary',
+    variant: 'filled',
+  },
+};
+
+export const FilledSecondary: Story = {
+  args: {
+    color: 'secondary',
+    variant: 'filled',
+  },
+};
+
+export const FilledDanger: Story = {
+  args: {
+    color: 'danger',
+    variant: 'filled',
+  },
+};
+
+export const OutlinedPrimary: Story = {
+  args: {
+    color: 'primary',
+    variant: 'outlined',
+  },
+};
+
+export const GhostPrimary: Story = {
+  args: {
+    color: 'primary',
+    variant: 'ghost',
   },
 };

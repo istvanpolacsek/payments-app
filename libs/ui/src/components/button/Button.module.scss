@@ -1,0 +1,99 @@
+@use 'sass:map';
+@use '../../styles/design-tokens' as tokens;
+
+@mixin button-shape {
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
+  border-radius: tokens.$border-radius-md;
+}
+
+$variants: (
+  filled: (
+    primary: (
+      background-color: tokens.$color-primary,
+      color: tokens.$color-text-primary,
+    ),
+    secondary: (
+      background-color: tokens.$color-secondary,
+      color: tokens.$color-text-primary,
+    ),
+    danger: (
+      background-color: tokens.$color-danger,
+      color: tokens.$color-text-primary,
+    )
+  ),
+  outlined: (
+    primary: (
+      border-color: tokens.$color-primary,
+      color: tokens.$color-primary-active
+    ),
+    secondary: (
+      border-color: tokens.$color-secondary,
+      color: tokens.$color-secondary-active
+    ),
+    danger: (
+      border-color: tokens.$color-danger,
+      color: tokens.$color-danger
+    )
+  ),
+  ghost: (
+    primary: (
+      color: tokens.$color-primary-active
+    ),
+    secondary: (
+      color: tokens.$color-secondary-active
+    ),
+    danger: (
+      color: tokens.$color-danger
+    ),
+  )
+);
+
+$hoverState: (
+  filled: (
+    primary: (background-color: tokens.$color-primary-hover),
+  ),
+  outlined: (),
+  ghost: ()
+);
+
+.base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: tokens.$font-weight-light;
+  letter-spacing: -2%;
+  font-family: tokens.$font-family-base;
+  cursor: pointer;
+  transition: background-color tokens.$duration-moderate, box-shadow tokens.$duration-quick;
+}
+
+@each $variant, $colorMap in $variants {
+  @each $color, $styles in $colorMap {
+    .#{$variant}-#{$color} {
+      @if $variant == 'filled' or $variant == 'outlined' {
+        box-shadow: tokens.$shadow-sm;
+        @include button-shape;
+      }
+
+      @each $property, $value in $styles {
+        #{$property}: $value;
+      }
+
+      &:hover {
+        @if $variant == 'filled' or $variant == 'outlined' {
+          box-shadow: tokens.$shadow-md;
+        } @else {
+          font-weight: tokens.$font-weight-normal
+        }
+
+        @each $property, $value in map.get(map.get($hoverState, $variant), $color) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
