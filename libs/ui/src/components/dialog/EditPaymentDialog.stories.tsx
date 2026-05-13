@@ -1,21 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import EditPaymentDialog from './EditPaymentDialog';
-import { fn } from 'storybook/test';
-import { ActionsProvider } from '../../providers';
-import type { ActionsProviderProps } from '../../providers/actions/ActionsProvider';
+import { paymentHandlers } from '../../mocks/handlers';
+import { ActionsDecorator } from '../../mocks/decorators';
 import { mockPayments } from '../../mocks/fixtures';
 
 const [defaultValues] = mockPayments.single;
-
-const successHandler = fn(async () => ({
-  success: true,
-})).mockName('updatePayment');
-
-const errorHandler = fn(async () => ({
-  success: false,
-  error: 'Something went wrong',
-})).mockName('updatePayment');
 
 const meta = {
   component: EditPaymentDialog,
@@ -31,15 +21,11 @@ type Story = StoryObj<typeof meta>;
 export const WithSuccess: Story = {
   decorators: [
     (Story) => (
-      <ActionsProvider
-        value={
-          {
-            updatePayment: successHandler,
-          } as unknown as ActionsProviderProps
-        }
+      <ActionsDecorator
+        value={{ updatePayment: paymentHandlers.updateSuccess }}
       >
         {Story()}
-      </ActionsProvider>
+      </ActionsDecorator>
     ),
   ],
 };
@@ -47,15 +33,9 @@ export const WithSuccess: Story = {
 export const WithError: Story = {
   decorators: [
     (Story) => (
-      <ActionsProvider
-        value={
-          {
-            updatePayment: errorHandler,
-          } as unknown as ActionsProviderProps
-        }
-      >
+      <ActionsDecorator value={{ updatePayment: paymentHandlers.updateError }}>
         {Story()}
-      </ActionsProvider>
+      </ActionsDecorator>
     ),
   ],
 };
