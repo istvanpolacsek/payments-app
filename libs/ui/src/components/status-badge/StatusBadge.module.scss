@@ -1,0 +1,32 @@
+@use 'sass:map';
+@use '../../styles/design-tokens' as tokens;
+
+.base {
+  font-family: tokens.$font-family-mono;
+  font-weight: tokens.$font-weight-light;
+  font-size: tokens.$font-size-sm;
+  letter-spacing: -2%;
+  border-radius: tokens.$border-radius-md;
+  padding-block: 0.375rem;
+  padding-inline: 0.5rem;
+}
+
+$variants: (
+  created: (
+    background-color: tokens.$color-info
+  ),
+  failed: (
+    background-color: tokens.$color-danger
+  ),
+  completed: (
+    background-color: tokens.$color-success
+  )
+);
+
+@each $variant, $styles in $variants {
+  .#{$variant} {
+    @each $property, $value in $styles {
+      #{$property}: $value;
+    }
+  }
+}

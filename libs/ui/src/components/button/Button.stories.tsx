@@ -7,6 +7,7 @@ const onClick = fn();
 
 const meta = {
   component: Button,
+  title: 'UI/Components/Button',
   args: { children: 'Button label', onClick },
   argTypes: {
     variant: { control: 'radio', options: VARIANTS },
