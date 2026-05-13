@@ -16,9 +16,7 @@ const PaymentsTable: FC<PaymentsTableProps> = ({ items }) => (
         <PaymentsTableItem key={id} id={id} {...item} />
       ))}
     </tbody>
-    <tfoot>
-      <PaymentsTableActions items={items} />
-    </tfoot>
+    <PaymentsTableActions items={items} />
   </PaymentsTableBase>
 );
 

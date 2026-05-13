@@ -16,7 +16,7 @@
     "verbatimModuleSyntax": true,
     "paths": {
       "@ui": ["./libs/ui/src/index.ts"],
-      "@ui/server": ["./libs/ui/src/server.ts"],
+      "@ui/server": ["./libs/ui/src/index.server.ts"],
       "@types": ["./libs/types/src/index.ts"]
     }
   },

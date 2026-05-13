@@ -1,1 +1,5 @@
-export { PaymentsTable } from './components';
+export {
+  PaymentsTable,
+  PaymentsTableError,
+  PaymentsTableLoading,
+} from './components';
