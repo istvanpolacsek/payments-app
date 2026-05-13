@@ -10,3 +10,8 @@ export interface Payment {
   status: Statuses;
   createdAt: string;
 }
+
+export interface StandardResponse {
+  success: boolean;
+  error?: string;
+}

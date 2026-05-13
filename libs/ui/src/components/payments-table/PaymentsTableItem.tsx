@@ -34,7 +34,22 @@ const PaymentsTableItem: FC<Payment> = (props) => {
         <StatusBadge status={status} />
       </td>
       <td className={cellCva()}>
-        <Button variant="outlined">Edit</Button>
+        <div className={styles.actions}>
+          <Button variant="outlined">Edit</Button>
+          {status === 'CREATED' && (
+            <>
+              <Button variant="outlined" color="secondary">
+                Complete
+              </Button>
+              <Button variant="outlined" color="secondary">
+                Mark as Failed
+              </Button>
+            </>
+          )}
+          <Button variant="outlined" color="danger">
+            Delete
+          </Button>
+        </div>
       </td>
     </tr>
   );

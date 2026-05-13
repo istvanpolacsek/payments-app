@@ -1,0 +1,55 @@
+@use '../../styles/design-tokens' as tokens;
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.backdropBg {
+  position: absolute;
+  inset: 0;
+  background-color: tokens.$color-secondary;
+  opacity: 0.3;
+  z-index: tokens.$z-index-modal-backdrop;
+}
+
+.surface {
+  background-color: tokens.$color-background-light;
+  font-family: tokens.$font-family-base;
+  font-weight: tokens.$font-weight-light;
+  padding: 1rem;
+  border-radius: tokens.$border-radius-md;
+  box-shadow: tokens.$shadow-lg;
+  min-width: 20rem;
+  z-index: tokens.$z-index-modal;
+  display: grid;
+  row-gap: 0.75rem;
+
+  > * {
+    margin: 0
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid tokens.$color-secondary;
+  padding-block: 1rem 0;
+}
+
+.error {
+  color: tokens.$color-danger;
+  border: 1px solid tokens.$color-danger;
+  padding-block: 0.375rem;
+  padding-inline: 0.5rem;
+  border-radius: tokens.$border-radius-md;
+}
+
+.content {
+  font-size: tokens.$font-size-lg;
+}
