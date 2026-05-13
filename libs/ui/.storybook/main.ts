@@ -1,7 +1,9 @@
 import { fileURLToPath } from 'node:url';
-import { dirname } from 'node:path';
+import { dirname, resolve } from 'node:path';
 
 import type { StorybookConfig } from '@storybook/nextjs';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const config: StorybookConfig = {
   stories: ['../**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
@@ -17,6 +19,21 @@ const config: StorybookConfig = {
   features: {
     sidebarOnboardingChecklist: false,
   },
+  webpackFinal(config) {
+    // Configure webpack module resolution for path aliases
+    if (!config.resolve) {
+      config.resolve = {};
+    }
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@types': resolve(__dirname, '../../types/src'),
+      '@tokens': resolve(__dirname, '../styles/design-tokens'),
+      '@ui': resolve(__dirname, '../src'),
+    };
+
+    return config;
+  },
 };
 
 function getAbsolutePath(value: string): any {
@@ -24,7 +41,3 @@ function getAbsolutePath(value: string): any {
 }
 
 export default config;
-
-// To customize your Vite configuration you can use the viteFinal field.
-// Check https://storybook.js.org/docs/react/builders/vite#configuration
-// and https://nx.dev/recipes/storybook/custom-builder-configs

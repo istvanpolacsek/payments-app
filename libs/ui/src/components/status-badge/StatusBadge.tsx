@@ -2,9 +2,7 @@ import { fromPairs, map, lowerCase, capitalize } from 'lodash';
 import type { FC } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import styles from './StatusBadge.module.scss';
-
-const STATUSES = ['CREATED', 'FAILED', 'COMPLETED'] as const;
-type Statuses = (typeof STATUSES)[number];
+import { type Statuses, STATUSES } from '@types';
 
 const statusBadgeCva = cva(styles.base, {
   variants: {

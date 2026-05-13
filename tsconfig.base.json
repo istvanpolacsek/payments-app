@@ -15,8 +15,9 @@
     "skipDefaultLibCheck": true,
     "verbatimModuleSyntax": true,
     "paths": {
-      "ui": ["./libs/ui/src/index.ts"],
-      "ui/server": ["./libs/ui/src/server.ts"]
+      "@ui": ["./libs/ui/src/index.ts"],
+      "@ui/server": ["./libs/ui/src/server.ts"],
+      "@types": ["./libs/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
