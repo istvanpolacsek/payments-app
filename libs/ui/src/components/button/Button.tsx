@@ -1,5 +1,5 @@
 import styles from './Button.module.scss';
-import { type ButtonHTMLAttributes, type FC, forwardRef } from 'react';
+import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { fromPairs, map, flatMap } from 'lodash';
