@@ -1,15 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import Button, { COLORS, VARIANTS } from './Button';
+import { expect, fn } from 'storybook/test';
+
+const onClick = fn();
 
 const meta = {
   component: Button,
-  args: { children: 'Button label' },
+  args: { children: 'Button label', onClick },
   argTypes: {
     variant: { control: 'radio', options: VARIANTS },
     color: { control: 'radio', options: COLORS },
   },
   parameters: { layout: 'centered' },
+  play: async ({ canvas, userEvent }) => {
+    const button = canvas.getByRole('button');
+
+    await userEvent.click(button);
+    await expect(onClick).toHaveBeenCalled();
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
