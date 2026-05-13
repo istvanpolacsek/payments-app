@@ -2,12 +2,12 @@ import { type FC, useActionState } from 'react';
 import type { DialogProps } from './Dialog';
 import { useClickOutside, useDialogHandlers } from '../../hooks';
 import DialogBase from './DialogBase';
-import { Button } from '..';
 import styles from './Dialog.module.scss';
 import SubmitButton from './SubmitButton';
 import { useActions } from '../../providers';
 import ErrorMessage from './ErrorMessage';
 import Form from './Form';
+import Button from '../button/Button';
 
 const DeletePaymentDialog: FC<DialogProps> = ({ id }) => {
   const { onClose } = useDialogHandlers();

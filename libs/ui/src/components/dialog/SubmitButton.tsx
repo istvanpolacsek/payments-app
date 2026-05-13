@@ -1,7 +1,6 @@
 import type { FC, PropsWithChildren } from 'react';
 import { useFormStatus } from 'react-dom';
-import { Button } from '../index';
-import type { ButtonProps } from '../button/Button';
+import Button, { type ButtonProps } from '../button/Button';
 
 const SubmitButton: FC<PropsWithChildren<ButtonProps>> = ({
   children,

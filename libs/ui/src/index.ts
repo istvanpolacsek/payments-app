@@ -1,1 +1,1 @@
-'use client';
+export { PaymentsTable } from './components';

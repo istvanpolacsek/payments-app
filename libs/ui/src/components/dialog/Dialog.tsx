@@ -10,9 +10,7 @@ import DeletePaymentDialog from './DeletePaymentDialog';
 
 type DialogTypes = 'create' | 'edit' | 'delete' | 'confirm';
 
-export interface DialogProps extends Partial<Payment> {
-  mode?: 'complete' | 'fail';
-}
+export type DialogProps = Partial<Payment>;
 
 const Dialog: FC<DialogProps> = (props) => {
   const params = useSearchParams();

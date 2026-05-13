@@ -3,6 +3,16 @@
 import type { Payment, StandardResponse } from '@types';
 import { revalidatePath } from 'next/cache';
 
+export async function getPayments(): Promise<Payment[]> {
+  try {
+    const response = await fetch(`${process.env.API_URL}/payments`);
+
+    return await response.json();
+  } catch {
+    return [];
+  }
+}
+
 export async function createPayment(
   _: StandardResponse,
   formData: FormData,

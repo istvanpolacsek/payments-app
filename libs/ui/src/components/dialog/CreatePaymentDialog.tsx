@@ -4,10 +4,11 @@ import { useClickOutside, useDialogHandlers } from '../../hooks';
 import { useActions } from '../../providers';
 import ErrorMessage from './ErrorMessage';
 import styles from './Dialog.module.scss';
-import { Button } from '../index';
 import SubmitButton from './SubmitButton';
-import Input from '../input/Input';
+
 import Form from './Form';
+import Input from '../input/Input';
+import Button from '../button/Button';
 
 const CreatePaymentDialog: FC = () => {
   const { onClose } = useDialogHandlers();
