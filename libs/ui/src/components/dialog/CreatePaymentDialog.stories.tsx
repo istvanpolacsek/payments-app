@@ -1,25 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import ConfirmDialog from './ConfirmDialog';
+import CreatePaymentDialog from './CreatePaymentDialog';
 import { fn } from 'storybook/test';
-import { ActionsProvider } from '../../providers';
 import type { ActionsProviderProps } from '../../providers/actions/ActionsProvider';
+import { ActionsProvider } from '../../providers';
 
 const successHandler = fn(async () => ({
   success: true,
-})).mockName('updatePaymentStatus');
+})).mockName('createPayment');
 
 const errorHandler = fn(async () => ({
   success: false,
   error: 'Something went wrong',
-})).mockName('updatePaymentStatus');
+})).mockName('createPayment');
 
 const meta = {
-  component: ConfirmDialog,
-  args: { mode: 'complete' },
+  component: CreatePaymentDialog,
   parameters: { layout: 'fullscreen' },
-  title: 'UI/Components/Confirm Dialog',
-} satisfies Meta<typeof ConfirmDialog>;
+  title: 'UI/Components/Create Payment Dialog',
+} satisfies Meta<typeof CreatePaymentDialog>;
 
 export default meta;
 
@@ -31,7 +30,7 @@ export const WithSuccess: Story = {
       <ActionsProvider
         value={
           {
-            updatePaymentStatus: successHandler,
+            createPayment: successHandler,
           } as unknown as ActionsProviderProps
         }
       >
@@ -47,7 +46,7 @@ export const WithError: Story = {
       <ActionsProvider
         value={
           {
-            updatePaymentStatus: errorHandler,
+            createPayment: errorHandler,
           } as unknown as ActionsProviderProps
         }
       >

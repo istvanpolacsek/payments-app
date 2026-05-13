@@ -9,11 +9,11 @@ import { useActions } from '../../providers';
 import ErrorMessage from './ErrorMessage';
 import Form from './Form';
 
-const ConfirmDialog: FC<DialogProps> = ({ mode, id }) => {
+const DeletePaymentDialog: FC<DialogProps> = ({ id }) => {
   const { onClose } = useDialogHandlers();
-  const { updatePaymentStatus } = useActions();
+  const { deletePayment } = useActions();
   const dialogRef = useClickOutside<HTMLFormElement>(onClose);
-  const [{ error = null }, formAction] = useActionState(updatePaymentStatus, {
+  const [{ error = null }, formAction] = useActionState(deletePayment, {
     success: false,
   });
 
@@ -22,7 +22,6 @@ const ConfirmDialog: FC<DialogProps> = ({ mode, id }) => {
       <Form ref={dialogRef} action={formAction}>
         <p className={styles.content}>Are you sure?</p>
         <input hidden name="id" defaultValue={id} />
-        <input hidden name="mode" defaultValue={mode} />
         <ErrorMessage error={error} />
         <div className={styles.actions}>
           <Button
@@ -33,11 +32,13 @@ const ConfirmDialog: FC<DialogProps> = ({ mode, id }) => {
           >
             Close
           </Button>
-          <SubmitButton>Confirm</SubmitButton>
+          <SubmitButton color="danger" variant="outlined">
+            Delete
+          </SubmitButton>
         </div>
       </Form>
     </DialogBase>
   );
 };
 
-export default ConfirmDialog;
+export default DeletePaymentDialog;
