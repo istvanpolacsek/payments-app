@@ -3,6 +3,7 @@ import type { Payment } from '@types';
 import { startCase, map } from 'lodash';
 import styles from './PaymentsTable.module.scss';
 import PaymentsTableItem from './PaymentsTableItem';
+import PaymentsTableActions from './PaymentsTableActions';
 
 export interface PaymentsTableProps {
   items: Payment[];
@@ -36,6 +37,9 @@ const PaymentsTable: FC<PaymentsTableProps> = ({ items }) => {
             <PaymentsTableItem key={id} id={id} {...item} />
           ))}
         </tbody>
+        <tfoot>
+          <PaymentsTableActions items={items} />
+        </tfoot>
       </table>
     </div>
   );
