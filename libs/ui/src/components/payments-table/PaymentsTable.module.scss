@@ -59,3 +59,9 @@
   align-items: center;
   justify-content: start;
 }
+
+.suspenseMessage {
+  border: 1px solid tokens.$color-secondary;
+  text-align: center;
+  padding-block: 3rem;
+}

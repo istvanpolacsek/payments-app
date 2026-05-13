@@ -1,7 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import PaymentsTable from './PaymentsTable';
-import { mockPayments, createPayments, createPaymentsByStatus } from '../../mocks/fixtures';
+import {
+  mockPayments,
+  createPayments,
+  createPaymentsByStatus,
+} from '../../mocks/fixtures';
+import PaymentsTableBase from './PaymentsTableBase';
+import LoadingMessage from './LoadingMessage';
+import ErrorMessage from './ErrorMessage';
 
 const meta = {
   component: PaymentsTable,
@@ -51,6 +58,29 @@ export const Many: Story = {
 
 export const CustomStatuses: Story = {
   args: {
-    items: createPaymentsByStatus(['COMPLETED', 'CREATED', 'FAILED', 'COMPLETED']),
+    items: createPaymentsByStatus([
+      'COMPLETED',
+      'CREATED',
+      'FAILED',
+      'COMPLETED',
+    ]),
   },
+};
+
+export const Loading: Story = {
+  args: { items: [] },
+  render: () => (
+    <PaymentsTableBase>
+      <LoadingMessage />
+    </PaymentsTableBase>
+  ),
+};
+
+export const Error: Story = {
+  args: { items: [] },
+  render: () => (
+    <PaymentsTableBase>
+      <ErrorMessage />
+    </PaymentsTableBase>
+  ),
 };
