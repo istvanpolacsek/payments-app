@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import CreatePaymentDialog from './CreatePaymentDialog';
 import { paymentHandlers } from '../../mocks/handlers';

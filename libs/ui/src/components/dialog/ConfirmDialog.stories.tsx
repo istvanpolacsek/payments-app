@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import ConfirmDialog from './ConfirmDialog';
 import { paymentHandlers } from '../../mocks/handlers';
@@ -6,7 +6,7 @@ import { ActionsDecorator } from '../../mocks/decorators';
 
 const meta = {
   component: ConfirmDialog,
-  args: { mode: 'complete' },
+  args: {},
   parameters: { layout: 'fullscreen' },
   title: 'UI/Components/Confirm Dialog',
 } satisfies Meta<typeof ConfirmDialog>;

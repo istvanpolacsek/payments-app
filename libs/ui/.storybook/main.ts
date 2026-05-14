@@ -1,7 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
-
-import type { StorybookConfig } from '@storybook/nextjs';
+import type { StorybookConfig } from '@storybook/nextjs-vite';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -9,7 +8,7 @@ const config: StorybookConfig = {
   stories: ['../**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
   addons: [],
   framework: {
-    name: getAbsolutePath('@storybook/nextjs'),
+    name: getAbsolutePath('@storybook/nextjs-vite'),
     options: {
       builder: {
         viteConfigPath: 'vite.config.mts',
@@ -19,7 +18,7 @@ const config: StorybookConfig = {
   features: {
     sidebarOnboardingChecklist: false,
   },
-  webpackFinal(config) {
+  viteFinal(config) {
     // Configure webpack module resolution for path aliases
     if (!config.resolve) {
       config.resolve = {};

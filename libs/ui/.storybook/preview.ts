@@ -1,4 +1,3 @@
-import RouterDecorator from './router-decorator';
 import ActionsDecorator from './actions-decorator';
 
 export default {
@@ -7,5 +6,5 @@ export default {
       appDirectory: true,
     },
   },
-  decorators: [RouterDecorator, ActionsDecorator],
+  decorators: [ActionsDecorator],
 };
