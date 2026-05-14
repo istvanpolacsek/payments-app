@@ -270,7 +270,7 @@ The payments page uses `const dynamic = 'force-dynamic'` to avoid prerendering:
 - Data fetched at request time (always fresh)
 - Suitable for data-heavy pages that change frequently
 
-```typescript
+```tsx
 // apps/web/app/page.tsx
 const dynamic = 'force-dynamic';
 
