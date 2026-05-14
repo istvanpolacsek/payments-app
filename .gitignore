@@ -17,7 +17,12 @@ out
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
 
+# DIST
 storybook-static
+dist
 
 # IDEA
 .idea
+
+# ENVs
+.env

@@ -6,3 +6,5 @@ export default async function Index() {
 
   return <PaymentsTable items={items} />;
 }
+
+export const dynamic = 'force-dynamic';

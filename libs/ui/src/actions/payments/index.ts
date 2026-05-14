@@ -2,6 +2,7 @@
 
 import type { Payment, StandardResponse } from '@types';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 export async function getPayments(): Promise<Payment[]> {
   try {
@@ -34,8 +35,7 @@ export async function createPayment(
 
     if (id) {
       revalidatePath('/');
-
-      return { success: true };
+      redirect('/');
     } else {
       return { success: false, error: 'Payment creation failed' };
     }
@@ -64,8 +64,7 @@ export async function updatePayment(
 
     if (ok) {
       revalidatePath('/');
-
-      return { success: true };
+      redirect('/');
     } else {
       return { success: false, error: 'Payment creation failed' };
     }
@@ -91,8 +90,7 @@ export async function updatePaymentStatus(
 
     if (ok) {
       revalidatePath('/');
-
-      return { success: true };
+      redirect('/');
     } else {
       return { success: false, error: 'Payment creation failed' };
     }
@@ -114,8 +112,7 @@ export async function deletePayment(
 
     if (ok) {
       revalidatePath('/');
-
-      return { success: true };
+      redirect('/');
     } else {
       return { success: false, error: 'Payment creation failed' };
     }
