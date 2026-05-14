@@ -11,10 +11,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     <div className={styles.base}>
       <label htmlFor={name} className={styles.label}>
         {label}
-        {required && <span className={styles.required}>*</span>}
+        {required && (
+          <span aria-hidden="true" className={styles.required}>
+            *
+          </span>
+        )}
       </label>
       <input
         ref={ref}
+        id={name}
         name={name}
         {...rest}
         required={required}

@@ -19,8 +19,9 @@ const playTextInputStory: Story['play'] = async ({
   canvas,
   userEvent,
 }) => {
-  const input = canvas.getByRole('textbox');
-  const label = canvas.getByText(String(args.label ?? ''));
+  const labelText = String(args.label ?? '');
+  const input = canvas.getByLabelText(labelMatcher(labelText));
+  const label = canvas.getByText(labelMatcher(labelText));
 
   await expect(label.className).toContain(styles.label);
   await expect(input.className).toContain(styles.input);
@@ -57,7 +58,7 @@ export const Required: Story = {
       NonNullable<Story['play']>
     >[0]);
 
-    const input = canvas.getByRole('textbox');
+    const input = canvas.getByLabelText(labelMatcher(String(args.label ?? '')));
 
     await expect(input).toBeRequired();
     await expect(canvas.getByText('*')).toHaveClass(styles.required);
@@ -73,7 +74,7 @@ export const Number: Story = {
     step: '0.01',
   },
   play: async ({ args, canvas, userEvent }) => {
-    const input = canvas.getByRole('spinbutton');
+    const input = canvas.getByLabelText(labelMatcher(String(args.label ?? '')));
 
     await expect(input.className).toContain(styles.input);
     await expect(input).toHaveAttribute('type', 'number');
@@ -85,3 +86,7 @@ export const Number: Story = {
     await expect(input).toHaveValue(12.34);
   },
 };
+
+function labelMatcher(label: string) {
+  return new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+}
